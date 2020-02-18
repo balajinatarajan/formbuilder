@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 10px 0;
+            background: #f2f2f2 url('http://formbuilder.readthedocs.io/en/latest/img/noise.png');
+        }
+        .get-data, .save-template {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Builder</h1>
+    <div id="build-wrap"></div>
+    <div class="setDataWrap">
+        <button id="getXML" type="button">Get XML Data</button>
+        <button id="getJSON" type="button">Get JSON Data</button>
+      </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
+    <script>
+        jQuery(function($) {
+        var fbEditor = document.getElementById('build-wrap');
+        var options = {
+                disabledAttrs: [
+                    'description',
+                    'placeholder',
+                    'className',
+                    'name',
+                    'access',
+                    'subtype',
+                    'inline',
+                    'other',
+                    'toggle'
+                ],
+                disableFields: [
+                    'autocomplete',
+                    'button',
+                    'date',
+                    'file',
+                    'header',
+                    'hidden',
+                    'number',
+                    'paragraph',
+                    'select'
+                ]
+            };
+        var formBuilder = $(fbEditor).formBuilder(options);
+
+        document.getElementById('getXML').addEventListener('click', function() {
+            alert(formBuilder.actions.getData('xml'));
+        });
+        document.getElementById('getJSON').addEventListener('click', function() {
+            alert(formBuilder.actions.getData('json'));
+        });
+        });
+    </script>
+</body>
+</html>
